@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface LineRepository extends JpaRepository<Line, Integer> {
-    List<Line> findLinesBySite_IdOrderByName(int id);
+    List<Line> findLinesBySite_Id(int id);
 }

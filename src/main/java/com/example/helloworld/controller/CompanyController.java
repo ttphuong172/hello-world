@@ -1,7 +1,6 @@
 package com.example.helloworld.controller;
 
 import com.example.helloworld.model.Company;
-import com.example.helloworld.model.Site;
 import com.example.helloworld.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

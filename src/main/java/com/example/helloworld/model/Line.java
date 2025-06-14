@@ -17,7 +17,7 @@ public class Line {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String ci;
+    private String circuitId;
     private String shortName;
     private String shortName2;
 
@@ -33,5 +33,9 @@ public class Line {
 
     private String ipAddress;
     private String pingtest;
+
+//    private String impact;
+//    private String affectLines;
+
 
 }

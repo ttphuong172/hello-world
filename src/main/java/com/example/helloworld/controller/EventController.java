@@ -1,8 +1,6 @@
 package com.example.helloworld.controller;
 
-import com.example.helloworld.model.Company;
 import com.example.helloworld.model.Event;
-import com.example.helloworld.service.CompanyService;
 import com.example.helloworld.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

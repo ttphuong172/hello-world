@@ -1,12 +1,13 @@
 package com.example.helloworld.controller;
 
 import com.example.helloworld.model.Contact;
-import com.example.helloworld.model.Line;
 import com.example.helloworld.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/contacts")
@@ -40,4 +41,17 @@ public class ContactController {
         contactService.save(contactCurrent);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("company/{id}")
+    public ResponseEntity<List<Contact>> findAllBySite_Company_Id(@PathVariable int id) {
+        return new ResponseEntity<>(contactService.findAllBySite_Company_Id(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> delete(@PathVariable int id){
+        Contact contact = contactService.findById(id);
+        contactService.delete(contact);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

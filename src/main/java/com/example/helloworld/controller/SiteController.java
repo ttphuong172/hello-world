@@ -1,6 +1,5 @@
 package com.example.helloworld.controller;
 
-import com.example.helloworld.model.Line;
 import com.example.helloworld.model.Site;
 import com.example.helloworld.model.dto.SiteDTO;
 import com.example.helloworld.service.SiteService;
@@ -35,7 +34,11 @@ public class SiteController {
             SiteDTO siteDTO = new SiteDTO();
             siteDTO.setId(siteList.get(i).getId());
             siteDTO.setName(siteList.get(i).getName());
-            siteDTO.setGmt(siteList.get(i).getGmt());
+            siteDTO.setNation(siteList.get(i).getNation());
+            siteDTO.setCity(siteList.get(i).getCity());
+            siteDTO.setAddress(siteList.get(i).getAddress());
+//            siteDTO.setGmt(siteList.get(i).getGmt());
+            siteDTO.setZoneId(siteList.get(i).getZoneId());
             siteDTO.setConfigure(siteList.get(i).getConfigure());
             siteDTO.setConfigureKr(siteList.get(i).getConfigureKr());
             siteDTO.setCompany(siteList.get(i).getCompany());
@@ -57,7 +60,11 @@ public class SiteController {
         SiteDTO siteDTO = new SiteDTO();
         siteDTO.setId(site.getId());
         siteDTO.setName(site.getName());
-        siteDTO.setGmt(site.getGmt());
+        siteDTO.setNation(site.getNation());
+        siteDTO.setCity(site.getCity());
+        siteDTO.setAddress(site.getAddress());
+//        siteDTO.setGmt(site.getGmt());
+        siteDTO.setZoneId(site.getZoneId());
         siteDTO.setConfigure(site.getConfigure());
         siteDTO.setConfigureKr(site.getConfigureKr());
         siteDTO.setCompany(site.getCompany());
@@ -77,7 +84,11 @@ public class SiteController {
             SiteDTO siteDTO = new SiteDTO();
             siteDTO.setId(siteList.get(i).getId());
             siteDTO.setName(siteList.get(i).getName());
-            siteDTO.setGmt(siteList.get(i).getGmt());
+            siteDTO.setNation(siteList.get(i).getNation());
+            siteDTO.setCity(siteList.get(i).getCity());
+            siteDTO.setAddress(siteList.get(i).getAddress());
+//            siteDTO.setGmt(siteList.get(i).getGmt());
+            siteDTO.setZoneId(siteList.get(i).getZoneId());
             siteDTO.setConfigure(siteList.get(i).getConfigure());
             siteDTO.setConfigureKr(siteList.get(i).getConfigureKr());
             siteDTO.setCompany(siteList.get(i).getCompany());
@@ -103,7 +114,11 @@ public class SiteController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         siteCurrent.setName(site.getName());
-        siteCurrent.setGmt(site.getGmt());
+        siteCurrent.setNation(site.getNation());
+        siteCurrent.setCity(site.getCity());
+        siteCurrent.setAddress(site.getAddress());
+//        siteCurrent.setGmt(site.getGmt());
+        siteCurrent.setZoneId(site.getZoneId());
         siteCurrent.setConfigure(site.getConfigure());
         siteCurrent.setConfigureKr(site.getConfigureKr());
         siteCurrent.setCompany(site.getCompany());
@@ -123,12 +138,17 @@ public class SiteController {
             SiteDTO siteDTO = new SiteDTO();
             siteDTO.setId(siteList.get(i).getId());
             siteDTO.setName(siteList.get(i).getName());
-            siteDTO.setGmt(siteList.get(i).getGmt());
+            siteDTO.setNation(siteList.get(i).getNation());
+            siteDTO.setCity(siteList.get(i).getCity());
+            siteDTO.setAddress(siteList.get(i).getAddress());
+//            siteDTO.setGmt(siteList.get(i).getGmt());
+            siteDTO.setZoneId(siteList.get(i).getZoneId());
             siteDTO.setConfigure(siteList.get(i).getConfigure());
             siteDTO.setConfigureKr(siteList.get(i).getConfigureKr());
             siteDTO.setCompany(siteList.get(i).getCompany());
             siteDTO.setRic(siteList.get(i).getRic());
             siteDTO.setLineList(siteList.get(i).getLineList());
+            siteDTO.setContactList(siteList.get(i).getContactList());
 
             siteDTOList.add(siteDTO);
         }

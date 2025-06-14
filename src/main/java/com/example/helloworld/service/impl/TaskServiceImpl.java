@@ -4,6 +4,7 @@ import com.example.helloworld.model.Action;
 import com.example.helloworld.model.Task;
 import com.example.helloworld.repository.TaskRepository;
 import com.example.helloworld.service.TaskService;
+import com.example.helloworld.service.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,9 @@ import java.util.Optional;
 public class TaskServiceImpl implements TaskService {
     @Autowired
     private TaskRepository taskRepository;
+
+    @Autowired
+    private TimeService timeService;
 
     @Override
     public List<Task> findAllByOrderByIdDesc() {
@@ -50,10 +54,15 @@ public class TaskServiceImpl implements TaskService {
 //            Fill name
         for (int i = 0; i < taskList.size(); i++) {
 
-            float gmt = taskList.get(i).getSite().getGmt();
-            int minutes = (int) (gmt * 60);
+//            float gmt = taskList.get(i).getSite().getGmt();
+//            int minutes = (int) (gmt * 60);
+
+            String zoneId = taskList.get(i).getSite().getZoneId();
+
+            System.out.println(zoneId);
+
             String no = String.format("%02d", i + 1);
-            Integer spaceInteger = no.length()  + (") ").length();
+            int spaceInteger = no.length()  + (") ").length();
             String spaceString = new String(new char[spaceInteger * 2 - 1]).replace('\0', ' ');
 
             List<String> names = Arrays.asList(taskList.get(i).getName().split("\\r?\\n"));
@@ -84,7 +93,9 @@ public class TaskServiceImpl implements TaskService {
                 String dateTimeLocalTemp = "";
                 try {
                     String startDateTime = linedownList.get(k).format(formatter);
-                    String startDateTimeLocal = linedownList.get(k).minusHours(9).plusMinutes(minutes).format(formatter);
+//                    String startDateTimeLocal = linedownList.get(k).minusHours(9).plusMinutes(minutes).format(formatter);
+                    String startDateTimeLocal = timeService.dateTimeLocal(linedownList.get(k), zoneId).format(formatter);
+
                     dateTimeLocalTemp = " (현지 " + startDateTimeLocal + " ~ ";
                     if (k == 0) {
                         writer.write(spaceString + "일시: " + startDateTime + " ~");
@@ -97,8 +108,10 @@ public class TaskServiceImpl implements TaskService {
                 try {
                     LocalDate startDate = linedownList.get(k).toLocalDate();
                     LocalDate endDate = lineupList.get(k).toLocalDate();
-                    LocalDate startDateLocal = linedownList.get(k).minusHours(9).plusMinutes(minutes).toLocalDate();
-                    LocalDate endDateLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).toLocalDate();
+//                    LocalDate startDateLocal = linedownList.get(k).minusHours(9).plusMinutes(minutes).toLocalDate();
+                    LocalDate startDateLocal = timeService.dateTimeLocal(linedownList.get(k), zoneId).toLocalDate();
+//                    LocalDate endDateLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).toLocalDate();
+                    LocalDate endDateLocal = timeService.dateTimeLocal(lineupList.get(k), zoneId).toLocalDate();
 
                     String endDateTime = "";
                     String endDateTimeLocal = "";
@@ -109,10 +122,12 @@ public class TaskServiceImpl implements TaskService {
                     }
                     writer.write(" " + endDateTime);
                     if (startDateLocal.isEqual(endDateLocal)) {
-                        endDateTimeLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).format(formatter1);
+//                        endDateTimeLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).format(formatter1);
+                        endDateTimeLocal = timeService.dateTimeLocal(lineupList.get(k), zoneId).format(formatter1);
                         dateTimeLocalTemp += endDateTimeLocal + ")";
                     } else {
-                        endDateTimeLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).format(formatter);
+//                        endDateTimeLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).format(formatter);
+                        endDateTimeLocal = timeService.dateTimeLocal(lineupList.get(k), zoneId).format(formatter);
                         dateTimeLocalTemp += endDateTimeLocal + ")";
                     }
                 } catch (IndexOutOfBoundsException e) {
@@ -212,8 +227,10 @@ public class TaskServiceImpl implements TaskService {
 
 //            Fill name
         for (int i = 0; i < taskList.size(); i++) {
-            float gmt = taskList.get(i).getSite().getGmt();
-            int minutes = (int) (gmt * 60);
+//            float gmt = taskList.get(i).getSite().getGmt();
+//            int minutes = (int) (gmt * 60);
+            String zoneId = taskList.get(i).getSite().getZoneId();
+
             String no = String.format("%02d", i + 1);
             Integer spaceInteger = no.length()  + (") ").length();
             String spaceString = new String(new char[spaceInteger * 2 - 1]).replace('\0', ' ');
@@ -246,7 +263,10 @@ public class TaskServiceImpl implements TaskService {
                 String dateTimeLocalTemp = "";
                 try {
                     String startDateTime = linedownList.get(k).format(formatter);
-                    String startDateTimeLocal = linedownList.get(k).minusHours(9).plusMinutes(minutes).format(formatter);
+//                    String startDateTimeLocal = linedownList.get(k).minusHours(9).plusMinutes(minutes).format(formatter);
+                    String startDateTimeLocal = timeService.dateTimeLocal(linedownList.get(k), zoneId).format(formatter);
+
+
                     dateTimeLocalTemp = " (Local " + startDateTimeLocal + " ~ ";
                     if (k == 0) {
                         writer.write(spaceString + "Date: " + startDateTime + " ~");
@@ -259,9 +279,10 @@ public class TaskServiceImpl implements TaskService {
                 try {
                     LocalDate startDate = linedownList.get(k).toLocalDate();
                     LocalDate endDate = lineupList.get(k).toLocalDate();
-                    LocalDate startDateLocal = linedownList.get(k).minusHours(9).plusMinutes(minutes).toLocalDate();
-                    LocalDate endDateLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).toLocalDate();
-
+//                    LocalDate startDateLocal = linedownList.get(k).minusHours(9).plusMinutes(minutes).toLocalDate();
+                    LocalDate startDateLocal = timeService.dateTimeLocal(linedownList.get(k), zoneId).toLocalDate();
+//                    LocalDate endDateLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).toLocalDate();
+                    LocalDate endDateLocal = timeService.dateTimeLocal(lineupList.get(k), zoneId).toLocalDate();
                     String endDateTime = "";
                     String endDateTimeLocal = "";
                     if (startDate.isEqual(endDate)) {
@@ -271,10 +292,12 @@ public class TaskServiceImpl implements TaskService {
                     }
                     writer.write(" " + endDateTime);
                     if (startDateLocal.isEqual(endDateLocal)) {
-                        endDateTimeLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).format(formatter1);
+//                        endDateTimeLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).format(formatter1);
+                        endDateTimeLocal = timeService.dateTimeLocal(lineupList.get(k), zoneId).format(formatter1);
                         dateTimeLocalTemp += endDateTimeLocal + ")";
                     } else {
-                        endDateTimeLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).format(formatter);
+//                        endDateTimeLocal = lineupList.get(k).minusHours(9).plusMinutes(minutes).format(formatter);
+                        endDateTimeLocal = timeService.dateTimeLocal(lineupList.get(k), zoneId).format(formatter);
                         dateTimeLocalTemp += endDateTimeLocal + ")";
                     }
                 } catch (IndexOutOfBoundsException e) {

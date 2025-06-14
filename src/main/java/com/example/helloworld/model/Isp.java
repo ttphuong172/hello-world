@@ -21,4 +21,5 @@ public class Isp {
     private int id;
     private String name;
     private String recipients;
+    private String carbonCopy;
 }

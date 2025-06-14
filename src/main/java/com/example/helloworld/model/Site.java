@@ -19,8 +19,11 @@ public class Site {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private float gmt;
-
+    private String nation;
+    private String city;
+    private String address;
+//    private String gmt;
+    private String zoneId;
     private String configure;
     private String configureKr;
 

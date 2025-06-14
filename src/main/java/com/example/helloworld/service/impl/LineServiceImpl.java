@@ -12,8 +12,8 @@ public class LineServiceImpl implements LineService {
     @Autowired
     private LineRepository lineRepository;
     @Override
-    public List<Line> findLinesBySite_IdOrderByName(int id) {
-        return lineRepository.findLinesBySite_IdOrderByName(id);
+    public List<Line> findLinesBySite_Id(int id) {
+        return lineRepository.findLinesBySite_Id(id);
     }
 
     @Override
@@ -24,6 +24,11 @@ public class LineServiceImpl implements LineService {
     @Override
     public Line findById(int id) {
         return lineRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(Line line) {
+        lineRepository.delete(line);
     }
 
 }

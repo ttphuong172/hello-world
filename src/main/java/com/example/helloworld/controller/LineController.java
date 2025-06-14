@@ -1,13 +1,11 @@
 package com.example.helloworld.controller;
 
 import com.example.helloworld.model.Line;
-import com.example.helloworld.model.Site;
 import com.example.helloworld.service.LineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -18,8 +16,8 @@ public class LineController {
     private LineService lineService;
 
     @GetMapping("site/{id}")
-    public ResponseEntity<List<Line>> findLinesBySite_IdOrderByName(@PathVariable int id) {
-        return new ResponseEntity<>(lineService.findLinesBySite_IdOrderByName(id), HttpStatus.OK);
+    public ResponseEntity<List<Line>> findLinesBySite_Id(@PathVariable int id) {
+        return new ResponseEntity<>(lineService.findLinesBySite_Id(id), HttpStatus.OK);
     }
 
     @GetMapping("{id}")
@@ -43,11 +41,18 @@ public class LineController {
         lineCurrent.setShortName(line.getShortName());
         lineCurrent.setShortName2(line.getShortName2());
         lineCurrent.setIsp(line.getIsp());
-        lineCurrent.setCi(line.getCi());
+        lineCurrent.setCircuitId(line.getCircuitId());
         lineCurrent.setIpAddress(line.getIpAddress());
         lineCurrent.setPingtest(line.getPingtest());
 
         lineService.save(lineCurrent);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> delete(@PathVariable int id){
+        Line line = lineService.findById(id);
+        lineService.delete(line);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
