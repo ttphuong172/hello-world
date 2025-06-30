@@ -15,10 +15,22 @@ import java.util.List;
 public class ContactController {
     @Autowired
     private ContactService contactService;
-    @PostMapping("")
-    public ResponseEntity<Contact> save(@RequestBody Contact contact) {
-        contactService.save(contact);
-        return new ResponseEntity<>(contact, HttpStatus.OK);
+//    @PostMapping("")
+//    public ResponseEntity<Contact> save(@RequestBody Contact contact) {
+//        contactService.saveContact(contact);
+//        return new ResponseEntity<>(contact, HttpStatus.OK);
+//    }
+
+    @PostMapping
+    public ResponseEntity<?> createContact(@RequestBody Contact contact) {
+        try {
+            Contact savedContact = contactService.saveContact(contact);
+            return new ResponseEntity<>(savedContact, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>("An error occurred: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("{id}")
@@ -26,21 +38,21 @@ public class ContactController {
         return new ResponseEntity<>(contactService.findById(id), HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody Contact contact) {
-        Contact contactCurrent = contactService.findById(id);
-        if (contactCurrent == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        contactCurrent.setName(contact.getName());
-        contactCurrent.setEmail(contact.getEmail());
-        contactCurrent.setOffice(contact.getOffice());
-        contactCurrent.setPhone(contact.getPhone());
-        contactCurrent.setRole(contact.getRole());
-        contactCurrent.setNote(contact.getNote());
-        contactService.save(contactCurrent);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @PutMapping("{id}")
+//    public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody Contact contact) {
+//        Contact contactCurrent = contactService.findById(id);
+//        if (contactCurrent == null) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        contactCurrent.setName(contact.getName());
+//        contactCurrent.setEmail(contact.getEmail());
+//        contactCurrent.setOfficePhoneNumber(contact.getOfficePhoneNumber());
+//        contactCurrent.setMobilePhoneNumber(contact.getMobilePhoneNumber());
+//        contactCurrent.setRole(contact.getRole());
+//        contactCurrent.setNote(contact.getNote());
+//        contactService.save(contactCurrent);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     @GetMapping("company/{id}")
     public ResponseEntity<List<Contact>> findAllBySite_Company_Id(@PathVariable int id) {
