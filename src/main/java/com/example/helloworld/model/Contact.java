@@ -18,8 +18,9 @@ public class Contact {
     private int id;
     private String name;
     private String email;
-    private String office;
-    private String phone;
+    private String countryCode;
+    private String officePhoneNumber;
+    private String mobilePhoneNumber;
     private String role;
     private String note;
 
