@@ -60,6 +60,7 @@ public class SiteController {
         SiteDTO siteDTO = new SiteDTO();
         siteDTO.setId(site.getId());
         siteDTO.setName(site.getName());
+        siteDTO.setCountry(site.getCountry());
         siteDTO.setNation(site.getNation());
         siteDTO.setCity(site.getCity());
         siteDTO.setAddress(site.getAddress());

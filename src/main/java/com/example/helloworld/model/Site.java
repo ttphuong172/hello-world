@@ -20,6 +20,11 @@ public class Site {
     private int id;
     private String name;
     private String nation;
+
+    @ManyToOne
+    @JoinColumn
+    private Country country;
+
     private String city;
     private String address;
 //    private String gmt;

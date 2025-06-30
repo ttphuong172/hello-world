@@ -31,8 +31,9 @@ public class Line {
 
     private String isp;
 
-    private String ipAddress;
-    private String pingtest;
+    @Column(columnDefinition = "TEXT")
+    private String tip;
+//    private String pingtest;
 
 //    private String impact;
 //    private String affectLines;
