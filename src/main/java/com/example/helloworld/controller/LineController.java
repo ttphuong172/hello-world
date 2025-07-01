@@ -43,7 +43,8 @@ public class LineController {
         lineCurrent.setIsp(line.getIsp());
         lineCurrent.setCircuitId(line.getCircuitId());
         lineCurrent.setTip(line.getTip());
-//        lineCurrent.setPingtest(line.getPingtest());
+
+        System.out.println(line.getTip());
 
         lineService.save(lineCurrent);
         return new ResponseEntity<>(HttpStatus.OK);
