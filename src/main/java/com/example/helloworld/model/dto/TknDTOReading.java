@@ -1,8 +1,6 @@
 package com.example.helloworld.model.dto;
 
-import com.example.helloworld.model.Comment;
-import com.example.helloworld.model.Reading;
-import com.example.helloworld.model.TknType;
+import com.example.helloworld.model.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -20,4 +18,7 @@ public class TknDTOReading {
     private List<Comment> commentList;
     private boolean isRead;
     private TknType tknType;
+    private Company company;
+    private Site site;
+
 }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class TknServiceImpl implements TknService {
     @Autowired
@@ -28,9 +30,11 @@ public class TknServiceImpl implements TknService {
         return tknRepository.findById(id).orElse(null);
     }
 
+
     @Override
-    public List<Tkn> searchByKeyword(String keyword)
+    public List<Tkn> searchByKeyword(String keyword, Optional<Integer> companyId, Optional<Integer> siteId)
     {
-        return tknRepository.searchByKeyword(keyword);
+        return tknRepository.searchByKeyword(keyword, companyId, siteId);
     }
+
 }

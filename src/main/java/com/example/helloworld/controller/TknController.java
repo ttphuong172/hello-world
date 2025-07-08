@@ -14,6 +14,7 @@ import java.sql.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/tkn")
@@ -44,6 +45,8 @@ public class TknController {
             tknDTOReading.setCreator(tknList.get(i).getCreator());
             tknDTOReading.setCreatingDate(tknList.get(i).getCreatingDate());
             tknDTOReading.setTknType(tknList.get(i).getTknType());
+            tknDTOReading.setCompany(tknList.get(i).getCompany());
+            tknDTOReading.setSite(tknList.get(i).getSite());
             tknDTOReading.setReadingList(tknList.get(i).getReadingList());
             tknDTOReading.setCommentList(tknList.get(i).getCommentList());
 
@@ -95,8 +98,8 @@ public class TknController {
     }
 
     @GetMapping("/search/{username}")
-    public List<TknDTOReading> searchByKeyword(@PathVariable String username, @RequestParam String keyword) {
-        List<Tkn> tknList = tknService.searchByKeyword(keyword);
+    public List<TknDTOReading> searchByKeyword(@PathVariable String username, @RequestParam String keyword, @RequestParam Optional<Integer> companyId, @RequestParam Optional<Integer> siteId) {
+        List<Tkn> tknList = tknService.searchByKeyword(keyword, companyId, siteId);
         List<TknDTOReading> tknDTOReadingList = new ArrayList<>();
 
         for (int i = 0; i < tknList.size(); i ++){
@@ -110,6 +113,8 @@ public class TknController {
             tknDTOReading.setCreator(tknList.get(i).getCreator());
             tknDTOReading.setCreatingDate(tknList.get(i).getCreatingDate());
             tknDTOReading.setTknType(tknList.get(i).getTknType());
+            tknDTOReading.setCompany(tknList.get(i).getCompany());
+            tknDTOReading.setSite(tknList.get(i).getSite());
             tknDTOReading.setReadingList(tknList.get(i).getReadingList());
             tknDTOReading.setCommentList(tknList.get(i).getCommentList());
 
@@ -126,4 +131,8 @@ public class TknController {
         }
         return tknDTOReadingList;
     }
+
+
+
+
 }

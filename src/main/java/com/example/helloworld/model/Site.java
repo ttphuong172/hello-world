@@ -45,6 +45,10 @@ public class Site {
     @JsonIgnore
     List<Contact> contactList;
 
+    @OneToMany(mappedBy = "site")
+    @JsonIgnore
+    private List<Tkn> tknList;
+
 
     private String topoPath;
 }

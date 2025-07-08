@@ -47,4 +47,14 @@ public class Tkn {
     @JoinColumn
     private TknType tknType;
 
+    @ManyToOne
+    @JoinColumn
+    private Company company;
+
+    @ManyToOne
+    @JoinColumn
+    private Site site;
+
+
+
 }

@@ -36,4 +36,8 @@ public class Company {
     @OneToMany(mappedBy = "company")
     @JsonIgnore
     List<Line> lineList;
+
+    @OneToMany(mappedBy = "company")
+    @JsonIgnore
+    List<Tkn> tknList;
 }
