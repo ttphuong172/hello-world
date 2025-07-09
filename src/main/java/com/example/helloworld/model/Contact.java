@@ -26,4 +26,7 @@ public class Contact {
     @ManyToOne
     @JoinColumn
     private Site site;
+
+    private int sequence;
+
 }

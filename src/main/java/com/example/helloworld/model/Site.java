@@ -22,7 +22,6 @@ public class Site {
     private String nation;
     private String city;
     private String address;
-//    private String gmt;
     private String zoneId;
     private String configure;
     private String configureKr;
@@ -42,6 +41,7 @@ public class Site {
     List<Line> lineList;
 
     @OneToMany(mappedBy = "site")
+    @OrderBy("sequence ASC, name ASC")
     @JsonIgnore
     List<Contact> contactList;
 
@@ -50,5 +50,4 @@ public class Site {
     private List<Tkn> tknList;
 
 
-    private String topoPath;
 }

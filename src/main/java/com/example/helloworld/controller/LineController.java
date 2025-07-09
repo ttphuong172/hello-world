@@ -42,8 +42,7 @@ public class LineController {
         lineCurrent.setShortName2(line.getShortName2());
         lineCurrent.setIsp(line.getIsp());
         lineCurrent.setCircuitId(line.getCircuitId());
-        lineCurrent.setIpAddress(line.getIpAddress());
-        lineCurrent.setPingtest(line.getPingtest());
+        lineCurrent.setTip(line.getTip());
 
         lineService.save(lineCurrent);
         return new ResponseEntity<>(HttpStatus.OK);

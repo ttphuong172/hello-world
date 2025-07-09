@@ -38,6 +38,7 @@ public class ContactController {
         contactCurrent.setPhone(contact.getPhone());
         contactCurrent.setRole(contact.getRole());
         contactCurrent.setNote(contact.getNote());
+        contactCurrent.setSequence(contact.getSequence());
         contactService.save(contactCurrent);
         return new ResponseEntity<>(HttpStatus.OK);
     }

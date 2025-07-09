@@ -79,6 +79,8 @@ public class TknController {
         tknDTO.setId(tkn.getId());
         tknDTO.setTitle(tkn.getTitle());
         tknDTO.setTknType(tkn.getTknType());
+        tknDTO.setCompany(tkn.getCompany());
+        tknDTO.setSite(tkn.getSite());
         tknDTO.setContent(tkn.getContent());
         tknDTO.setSummaryContent(tkn.getSummaryContent());
         tknDTO.setCreator(tkn.getCreator());
@@ -98,8 +100,8 @@ public class TknController {
     }
 
     @GetMapping("/search/{username}")
-    public List<TknDTOReading> searchByKeyword(@PathVariable String username, @RequestParam String keyword, @RequestParam Optional<Integer> companyId, @RequestParam Optional<Integer> siteId) {
-        List<Tkn> tknList = tknService.searchByKeyword(keyword, companyId, siteId);
+    public List<TknDTOReading> searchByKeyword(@PathVariable String username, @RequestParam String keyword, @RequestParam Optional<Integer> tknTypeId,@RequestParam Optional<Integer> companyId, @RequestParam Optional<Integer> siteId) {
+        List<Tkn> tknList = tknService.searchByKeyword(keyword, tknTypeId,companyId, siteId);
         List<TknDTOReading> tknDTOReadingList = new ArrayList<>();
 
         for (int i = 0; i < tknList.size(); i ++){

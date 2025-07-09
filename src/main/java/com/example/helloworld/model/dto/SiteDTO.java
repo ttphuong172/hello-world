@@ -14,7 +14,6 @@ public class SiteDTO {
     private String nation;
     private String city;
     private String address;
-//    private String gmt;
     private String zoneId;
     private String configure;
     private String configureKr;

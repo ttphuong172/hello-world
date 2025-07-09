@@ -32,9 +32,9 @@ public class TknServiceImpl implements TknService {
 
 
     @Override
-    public List<Tkn> searchByKeyword(String keyword, Optional<Integer> companyId, Optional<Integer> siteId)
+    public List<Tkn> searchByKeyword(String keyword, Optional<Integer> tknTypeId, Optional<Integer> companyId, Optional<Integer> siteId)
     {
-        return tknRepository.searchByKeyword(keyword, companyId, siteId);
+        return tknRepository.searchByKeyword(keyword, tknTypeId,companyId, siteId);
     }
 
 }

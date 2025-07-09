@@ -37,7 +37,6 @@ public class SiteController {
             siteDTO.setNation(siteList.get(i).getNation());
             siteDTO.setCity(siteList.get(i).getCity());
             siteDTO.setAddress(siteList.get(i).getAddress());
-//            siteDTO.setGmt(siteList.get(i).getGmt());
             siteDTO.setZoneId(siteList.get(i).getZoneId());
             siteDTO.setConfigure(siteList.get(i).getConfigure());
             siteDTO.setConfigureKr(siteList.get(i).getConfigureKr());
@@ -63,7 +62,6 @@ public class SiteController {
         siteDTO.setNation(site.getNation());
         siteDTO.setCity(site.getCity());
         siteDTO.setAddress(site.getAddress());
-//        siteDTO.setGmt(site.getGmt());
         siteDTO.setZoneId(site.getZoneId());
         siteDTO.setConfigure(site.getConfigure());
         siteDTO.setConfigureKr(site.getConfigureKr());
@@ -87,7 +85,6 @@ public class SiteController {
             siteDTO.setNation(siteList.get(i).getNation());
             siteDTO.setCity(siteList.get(i).getCity());
             siteDTO.setAddress(siteList.get(i).getAddress());
-//            siteDTO.setGmt(siteList.get(i).getGmt());
             siteDTO.setZoneId(siteList.get(i).getZoneId());
             siteDTO.setConfigure(siteList.get(i).getConfigure());
             siteDTO.setConfigureKr(siteList.get(i).getConfigureKr());
@@ -117,7 +114,6 @@ public class SiteController {
         siteCurrent.setNation(site.getNation());
         siteCurrent.setCity(site.getCity());
         siteCurrent.setAddress(site.getAddress());
-//        siteCurrent.setGmt(site.getGmt());
         siteCurrent.setZoneId(site.getZoneId());
         siteCurrent.setConfigure(site.getConfigure());
         siteCurrent.setConfigureKr(site.getConfigureKr());
@@ -141,7 +137,6 @@ public class SiteController {
             siteDTO.setNation(siteList.get(i).getNation());
             siteDTO.setCity(siteList.get(i).getCity());
             siteDTO.setAddress(siteList.get(i).getAddress());
-//            siteDTO.setGmt(siteList.get(i).getGmt());
             siteDTO.setZoneId(siteList.get(i).getZoneId());
             siteDTO.setConfigure(siteList.get(i).getConfigure());
             siteDTO.setConfigureKr(siteList.get(i).getConfigureKr());
