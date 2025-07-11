@@ -37,6 +37,7 @@ public class Site {
     private String ric;
 
     @OneToMany(mappedBy = "site")
+    @OrderBy("sequence ASC, name ASC")
     @JsonIgnore
     List<Line> lineList;
 

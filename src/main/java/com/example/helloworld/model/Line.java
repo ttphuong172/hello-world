@@ -34,4 +34,6 @@ public class Line {
     @Column(columnDefinition = "TEXT")
     private String tip;
 
+    private int sequence;
+
 }

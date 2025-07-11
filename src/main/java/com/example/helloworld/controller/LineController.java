@@ -43,6 +43,7 @@ public class LineController {
         lineCurrent.setIsp(line.getIsp());
         lineCurrent.setCircuitId(line.getCircuitId());
         lineCurrent.setTip(line.getTip());
+        lineCurrent.setSequence(line.getSequence());
 
         lineService.save(lineCurrent);
         return new ResponseEntity<>(HttpStatus.OK);
