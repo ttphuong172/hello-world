@@ -13,7 +13,7 @@ public class LineServiceImpl implements LineService {
     private LineRepository lineRepository;
     @Override
     public List<Line> findLinesBySite_Id(int id) {
-        return lineRepository.findLinesBySite_Id(id);
+        return lineRepository.findLinesBySite_IdOrderBySequence(id);
     }
 
     @Override
